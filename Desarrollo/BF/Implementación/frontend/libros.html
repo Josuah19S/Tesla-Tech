@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Biblio F-Easy - Libros</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary-color: #1652f7;
+        --secondary-color: #455ea2;
+      }
+
+      .full-screen {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+      .sticky-wrapper {
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <main>
+      <nav
+        class="navbar navbar-expand-lg"
+        style="background: var(--secondary-color);"
+      >
+        <div class="container">
+          <a class="navbar-brand" style="color: white;" href="index.html">
+            <i class="bi-book-half"></i>
+            <span>BF-Easy</span>
+          </a>
+
+          <div class="d-lg-none ms-auto me-4">
+            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+          </div>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-5 me-lg-auto">
+              <li class="nav-item">
+                <a class="nav-link click-scroll" href="index.html">Inicio</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link click-scroll" href="#section_4">FAQs</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link click-scroll" href="libros.html">Libros</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link click-scroll" href="#top">Carnet</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link click-scroll" href="#top">Pupitres</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link click-scroll" href="#section_5"
+                  >Contactanos</a
+                >
+              </li>
+            </ul>
+
+            <div class="d-none d-lg-block">
+              <a
+                href="login.html"
+                class="navbar-icon bi-person smoothscroll"
+              ></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row" style="padding-bottom: 25px;">
+            <div class="col-lg-10 col-12 mx-auto">
+              <h2 class="text-center">
+                Libros Populares
+              </h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                >
+                  <image
+                    href="images/libros/libro mateba.jpg"
+                    height="100%"
+                    width="100%"
+                  />
+                  <title>Portada del libro</title>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">
+                    Titulo: Álgebra Lineal | Grossman
+                  </p>
+                  <p class="card-text">
+                    Tags: Matematica, Algebra.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Detalles
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Reservar
+                      </button>
+                    </div>
+                    <!-- <small class="text-muted">9 mins</small> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                >
+                  <image
+                    href="images/libros/libro algorit.jpg"
+                    height="100%"
+                    width="100%"
+                  />
+                  <title>Portada del libro</title>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">
+                    Titulo: Introduction to Algorithms, Cormen
+                  </p>
+                  <p class="card-text">
+                    Tags: Algoritmos, Complejidad.
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Detalles
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Reservar
+                      </button>
+                    </div>
+                    <!-- <small class="text-muted">9 mins</small> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                >
+                  <image
+                    href="images/libros/libro fisica.webp"
+                    height="100%"
+                    width="100%"
+                  />
+                  <title>Portada del libro</title>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">
+                    Titulo: University Physics Volume 1
+                  </p>
+                  <p class="card-text">
+                    Tags: Fisica, Universitario.
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Detalles
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Reservar
+                      </button>
+                    </div>
+                    <!-- <small class="text-muted">9 mins</small> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="padding-bottom: 25px; padding-top: 50px;">
+              <div class="col-lg-10 col-12 mx-auto">
+                <h2 class="text-center">
+                  Otros libros
+                </h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <svg
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                    aria-label="Placeholder: Thumbnail"
+                  >
+                    <title>Portada del libro</title>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="#55595c"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #43484b;"
+                    ></rect>
+                    <text
+                      x="50%"
+                      y="50%"
+                      fill="#eceeef"
+                      dy=".3em"
+                      data-darkreader-inline-fill=""
+                      style="--darkreader-inline-fill: #dddad6;"
+                    >
+                      Foto no disponible aun
+                    </text>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      Titulo: Lorem ipsum dolor sit amet.
+                    </p>
+                    <p class="card-text">
+                      Tags: Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Detalles
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Reservar
+                        </button>
+                      </div>
+                      <!-- <small class="text-muted">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <style>
+      .site-footer::after {
+        border-color: transparent transparent #f7b816 transparent;
+      }
+    </style>
+
+    <footer
+      class="site-footer section-padding"
+      style="border-bottom: 10px solid #f7b816;"
+      id="section_5"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-12 mb-4 pb-2">
+            <a class="navbar-brand mb-2" href="index.html">
+              <i class="bi-book-half"></i>
+              <span>BF-Easy</span>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <h6
+              class="site-footer-title mb-3"
+              style="color: var(--secondary-color);"
+            >
+              Recursos
+            </h6>
+
+            <ul class="site-footer-links">
+              <li class="site-footer-link-item">
+                <a href="index.html" class="site-footer-link">Inicio</a>
+              </li>
+
+              <li class="site-footer-link-item">
+                <a href="index.html" class="site-footer-link">FAQs</a>
+              </li>
+
+              <li class="site-footer-link-item">
+                <a href="index.html" class="site-footer-link">Contactanos</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+            <h6
+              class="site-footer-title mb-3"
+              style="color: var(--secondary-color);"
+            >
+              Informacion
+            </h6>
+
+            <p class="text-white d-flex mb-1">
+              <a href="tel: 442-1210" class="site-footer-link">
+                (01) 442-1210
+              </a>
+            </p>
+
+            <p class="text-white d-flex">
+              <a href="mailto:info@company.com" class="site-footer-link">
+                informes@tesla-tech.com
+              </a>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Español
+              </button>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <button class="dropdown-item" type="button">English</button>
+                </li>
+
+                <li>
+                  <button class="dropdown-item" type="button">Portugues</button>
+                </li>
+
+                <li>
+                  <button class="dropdown-item" type="button">Sirulengo</button>
+                </li>
+              </ul>
+            </div>
+
+            <p class="copyright-text mt-lg-5 mt-4">
+              Copyright © 2024 Tesla Tech. Todos los derechos reservados.
+              <br /><br />Hecho con 💖 para UNMSM-FISI
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>

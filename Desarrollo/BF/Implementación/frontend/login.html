@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+
+    <style>
+        :root {
+        --primary-color: #1652f7;
+        --secondary-color: #455ea2;
+      }
+
+      .sticky-wrapper {
+        position: relative;
+      }
+
+      .divider::after,
+      .divider::before {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #eee;
+      }
+
+      .h-custom {
+        height: calc(100% - 73px);
+      }
+
+      @media (max-width: 450px) {
+        .h-custom {
+          height: 100%;
+        }
+      }
+    </style>
+
+    <title>Biblio F-Easy - Login</title>
+  </head>
+  <body>
+    <main>
+        <nav class="navbar navbar-expand-lg" style="background: var(--secondary-color);">
+            <div class="container">
+              <a class="navbar-brand" style="color: white;" href="index.html">
+                <i class="bi-book-half"></i>
+                <span>BF-Easy</span>
+              </a>
+    
+              <div class="d-lg-none ms-auto me-4">
+                <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+              </div>
+    
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+    
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" href="index.html">Inicio</a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#section_4">FAQs</a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" href="libros.html">Libros</a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#top">Carnet</a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#top">Pupitres</a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#section_5"
+                      >Contactanos</a
+                    >
+                  </li>
+                </ul>
+    
+                <div class="d-none d-lg-block">
+                  <a
+                    href="login.html"
+                    class="navbar-icon bi-person smoothscroll"
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    
+    <section class="vh-100">
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form>
+              <!-- <div
+                class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
+              >
+                <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                <button
+                  type="button"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-primary btn-floating mx-1"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button
+                  type="button"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-primary btn-floating mx-1"
+                >
+                  <i class="fab fa-twitter"></i>
+                </button>
+
+                <button
+                  type="button"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-primary btn-floating mx-1"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </button>
+              </div> -->
+
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0">
+                  Bienvenido al login de Biblio F-Easy!
+                </p>
+              </div>
+
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input
+                  type="email"
+                  id="form3Example3"
+                  class="form-control form-control-lg"
+                  placeholder="Ingrese su correo institucional"
+                />
+                <label class="form-label" for="form3Example3"
+                  >Correo electronico</label
+                >
+              </div>
+
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-3">
+                <input
+                  type="password"
+                  id="form3Example4"
+                  class="form-control form-control-lg"
+                  placeholder="Ingrese su contraseña"
+                />
+                <label class="form-label" for="form3Example4">Contraseña</label>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- Checkbox -->
+                <div class="form-check mb-0">
+                  <input
+                    class="form-check-input me-2"
+                    type="checkbox"
+                    value=""
+                    id="form2Example3"
+                  />
+                  <label class="form-check-label" for="form2Example3">
+                    Recuérdame
+                  </label>
+                </div>
+                <a href="#!" class="text-body">Olvidó su contraseña?</a>
+              </div>
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button
+                  type="button"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                >
+                  Ingresar
+                </button>
+                <!-- <p class="small fw-bold mt-2 pt-1 mb-0">
+                  Don't have an account?
+                  <a href="#!" class="link-danger">Register</a>
+                </p> -->
+              </div>
+            </form>
+          </div>
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="img-fluid"
+              alt="Sample image"
+            />
+          </div>
+        </div>
+      </div>
+      <style>
+        .site-footer::after {
+          border-color: transparent transparent #f7b816 transparent;
+        }
+      </style>
+  
+      <footer
+        class="site-footer section-padding"
+        style="border-bottom: 10px solid #f7b816;"
+        id="section_5"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-12 mb-4 pb-2">
+              <a class="navbar-brand mb-2" href="index.html">
+                <i class="bi-book-half"></i>
+                <span>BF-Easy</span>
+              </a>
+            </div>
+  
+            <div class="col-lg-3 col-md-4 col-6">
+              <h6
+                class="site-footer-title mb-3"
+                style="color: var(--secondary-color);"
+              >
+                Recursos
+              </h6>
+  
+              <ul class="site-footer-links">
+                <li class="site-footer-link-item">
+                  <a href="index.html" class="site-footer-link">Inicio</a>
+                </li>
+  
+                <li class="site-footer-link-item">
+                  <a href="index.html" class="site-footer-link">FAQs</a>
+                </li>
+  
+                <li class="site-footer-link-item">
+                  <a href="index.html" class="site-footer-link">Contactanos</a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+              <h6
+                class="site-footer-title mb-3"
+                style="color: var(--secondary-color);"
+              >
+                Informacion
+              </h6>
+  
+              <p class="text-white d-flex mb-1">
+                <a href="tel: 442-1210" class="site-footer-link">
+                  (01) 442-1210
+                </a>
+              </p>
+  
+              <p class="text-white d-flex">
+                <a href="mailto:info@company.com" class="site-footer-link">
+                  informes@tesla-tech.com
+                </a>
+              </p>
+            </div>
+  
+            <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Español
+                </button>
+  
+                <ul class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item" type="button">English</button>
+                  </li>
+  
+                  <li>
+                    <button class="dropdown-item" type="button">Portugues</button>
+                  </li>
+  
+                  <li>
+                    <button class="dropdown-item" type="button">Sirulengo</button>
+                  </li>
+                </ul>
+              </div>
+  
+              <p class="copyright-text mt-lg-5 mt-4">
+                Copyright © 2024 Tesla Tech. Todos los derechos reservados.
+                <br /><br />Hecho con 💖 para UNMSM-FISI
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>
