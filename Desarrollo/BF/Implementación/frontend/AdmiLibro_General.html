@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblio-FISI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        #logo {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        #menu {
+            display: flex;
+        }
+        #menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #555;
+            border-radius: 5px;
+        }
+        #menu a:hover {
+            background-color: #777;
+        }
+        #content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <img id="logo" src="images/logobfisi.PNG" alt="Logo de la Biblioteca">
+        <nav id="menu">
+            <a href="#" id="prestamo">Préstamo</a>
+            <a href="#" id="devoluciones">Devoluciones</a>
+            <a href="#" id="reservas">Reservas</a>
+            <a href="#" id="catalogo">Catálogo</a>
+            <a href="#" id="libros">Libros</a>
+        </nav>
+    </header>
+    <div id="content">
+        <!-- Aquí se mostrará el contenido según el botón que se presione -->
+    </div>
+
+    <!-- Aquí puedes añadir tu script JavaScript -->
+    <script>
+        document.getElementById('prestamo').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = `
+                <h2>Préstamo de Libros</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Solicitante:</label>
+                        <input type="text" id="nombre" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="libro">Título del Libro:</label>
+                        <input type="text" id="libro" name="libro">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-prestamo">Fecha de Préstamo:</label>
+                        <input type="date" id="fecha-prestamo" name="fecha-prestamo">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Solicitar Préstamo</button>
+                    </div>
+                </form>
+            `;
+        });
+        document.getElementById('devoluciones').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = `
+                <h2>Devoluciones de Libros</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Solicitante:</label>
+                        <input type="text" id="nombre" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="libro">Título del Libro:</label>
+                        <input type="text" id="libro" name="libro">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-devolucion">Fecha de Devolución:</label>
+                        <input type="date" id="fecha-devolucion" name="fecha-devolucion">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Registrar Devolución</button>
+                    </div>
+                </form>
+            `;
+        });
+        document.getElementById('reservas').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = `
+                <h2>Reservas de Libros</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Solicitante:</label>
+                        <input type="text" id="nombre" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="libro">Título del Libro:</label>
+                        <input type="text" id="libro" name="libro">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-reserva">Fecha de Reserva:</label>
+                        <input type="date" id="fecha-reserva" name="fecha-reserva">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Solicitar Reserva</button>
+                    </div>
+                </form>
+            `;
+        });
+        document.getElementById('catalogo').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = `
+                <h2>Catálogo de Libros</h2>
+                <p>Aquí puedes buscar y explorar todos los libros disponibles en nuestra biblioteca.</p>
+                <div class="form-group">
+                    <label for="buscar">Buscar Libro:</label>
+                    <input type="text" id="buscar" name="buscar" placeholder="Ingresa el título, autor o tema">
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="buscarLibro()">Buscar</button>
+                </div>
+                <div id="resultados-busqueda"></div>
+            `;
+        });
+        document.getElementById('libros').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = `
+                <h2>Gestión de Libros</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="titulo">Título del Libro:</label>
+                        <input type="text" id="titulo" name="titulo">
+                    </div>
+                    <div class="form-group">
+                        <label for="autor">Autor del Libro:</label>
+                        <input type="text" id="autor" name="autor">
+                    </div>
+                    <div class="form-group">
+                        <label for="isbn">ISBN:</label>
+                        <input type="text" id="isbn" name="isbn">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Agregar/Actualizar Libro</button>
+                    </div>
+                </form>
+            `;
+        });
+
+        function buscarLibro() {
+            const query = document.getElementById('buscar').value;
+            document.getElementById('resultados-busqueda').innerText = `Resultados de búsqueda para: ${query}`;
+        }
+    </script>
+</body>
+</html>
