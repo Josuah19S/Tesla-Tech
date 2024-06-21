@@ -10,4 +10,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     loadComponent('navbar.html', 'navbar-placeholder');
     loadComponent('footer.html', 'footer-placeholder');
+    loadComponent('navbar(Admin).html', 'navbar(Admin)-placeholder');
 });
