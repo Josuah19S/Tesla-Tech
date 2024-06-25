@@ -1,0 +1,11 @@
+id_usuario	cod_admin	cod_alumno	username	password	rol
+1		23200318	jean.lavaud	lavaud	user
+2		22200070	luis.arroyo	arroyo	user
+3		21200217	leslie.diaz	diaz	user
+4		22200263	denilson.morales	morales	user
+5		22200304	sebastian.ayala	ayala	user
+6		22200280	braulio.saldana	saldana	user
+7		22200237	josue.carbajal	carbajal	user
+8		22200258	bruno.chochoca	chochoca	user
+9	1234		miriam.espinoza	espinoza	admin
+10	4321		zulema.aguirre	aguirre	admin
