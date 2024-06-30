@@ -50,4 +50,3 @@ dependencies:
       - flask-mysqldb==2.0.0
       - mysqlclient==2.2.4
       - pymysql==1.1.1
-prefix: C:\Users\User\anaconda3\envs\bf_easy_backend
