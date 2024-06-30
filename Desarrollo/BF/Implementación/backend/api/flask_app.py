@@ -1,18 +1,22 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS # Agregar CORS
 from flask_mysqldb import MySQL
 import pandas as pd
 import config
 
 app = Flask(__name__)
 
-# Configuración de la conexión a la base de datos (esto es una prueba)
+# Configuración de la conexión a la base de datos
 app.config['MYSQL_HOST'] = config.MYSQL_HOST
 app.config['MYSQL_USER'] = config.MYSQL_USER
 app.config['MYSQL_PASSWORD'] = config.MYSQL_PASSWORD
 app.config['MYSQL_DB'] = config.MYSQL_DB
 
 mysql = MySQL(app)
+
+# Habilitar CORS para todas las rutas
+CORS(app)
 
 # ============================================================
 # Rutas
