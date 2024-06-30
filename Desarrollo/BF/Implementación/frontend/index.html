@@ -105,18 +105,10 @@
               Busca. Aprende. Transforma.
             </h1>
 
-            <!-- <h6 class="text-center">
-                Encuentra los libros que necesitas a un clic de distancia
-              </h6> -->
-
-            <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+            <form id="searchForm" method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
               <div class="input-group input-group-lg">
-                <span class="input-group-text bi-search" id="basic-addon1">
-                </span>
-
-                <input name="keyword" type="search" class="form-control" id="keyword"
-                  placeholder="Matematica, Algoritmos, Fisica..." aria-label="Buscar" />
-
+                <span class="input-group-text bi-search" id="basic-addon1"></span>
+                <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Matematica, Algoritmos, Fisica..." aria-label="Buscar" />
                 <button type="submit" class="form-control">Buscar</button>
               </div>
             </form>
@@ -209,6 +201,13 @@
 
 
   <!-- JAVASCRIPT FILES -->
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const keyword = document.getElementById('keyword').value;
+      window.location.href = `User-Busqueda.html?keyword=${encodeURIComponent(keyword)}`;
+    });
+  </script>
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
