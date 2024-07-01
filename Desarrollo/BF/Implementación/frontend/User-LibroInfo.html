@@ -108,7 +108,7 @@
         </div>
         <div class="book-info">
           <h1 id="book-title">Título del Libro</h1>
-          <p><span class="label">ID del Libro:</span> <span id="book-id">id_libro</span></p>
+          <p><span class="label">ISBN:</span> <span id="book-isbn">id_libro</span></p>
           <p><span class="label">Descripción:</span> <span id="book-description">Una breve descripción del libro que proporciona información sobre el contenido y los temas tratados.</span></p>
           <p><span class="label">Autor:</span> <span id="book-author">Nombre del Autor</span></p>
           <p><span class="label">Editorial:</span> <span id="book-editorial">Nombre de la Editorial</span></p>
@@ -153,7 +153,7 @@
             // Mostrar los datos del libro en la página
             document.getElementById('book-cover').src = `..${libro.pathPortada}`;
             document.getElementById('book-title').textContent = libro.titulo;
-            document.getElementById('book-id').textContent = libro.id_libro;
+            document.getElementById('book-isbn').textContent = libro.isbn;
             document.getElementById('book-description').textContent = libro.descrip;
             document.getElementById('book-author').textContent = libro.autor;
             document.getElementById('book-editorial').textContent = libro.editorial;
