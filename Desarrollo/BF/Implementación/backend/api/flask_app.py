@@ -301,6 +301,81 @@ def buscar_libro():
     except Exception as e:
         return f'Error al buscar libros: {str(e)}', 500
 
+# Ruta para devolver libros dado un termino de busqueda
+@app.route('/api/editarCatalogo', methods=['POST'])
+def editar_catalogo():
+    try:
+        # Obtener el JSON del cuerpo de la solicitud
+        input = request.get_json()
+
+        if not (len(input) == 2 and 'tipo' in input and 'columnas' in input):
+            abort(400, f'El JSON debe debe tener "tipo" y "columnas"')
+
+        tipo = input['tipo']
+        columnas = input['columnas']
+
+        if tipo not in ['update','create']:
+            abort(400, f'El objeto "tipo" del JSON solo puede ser "create" o "update"')
+
+        campos_necesarios = ['titulo','descrip','autor','anio','editorial','isbn','estado']
+        campos_filtrados = [campo for campo in columnas if campo in campos_necesarios]
+        
+        if len(campos_filtrados) != len(campos_necesarios):
+            abort(400, f'El objeto "data" del JSON debe tener todos los campos')
+        
+        cur = mysql.connection.cursor() 
+
+        # Acceder a los valores en el diccionario columnas
+        titulo = columnas['titulo']
+        descrip = columnas['descrip']
+        autor = columnas['autor']
+        anio = int(columnas['anio'])
+        editorial = columnas['editorial']
+        isbn = columnas['isbn']
+        estado = columnas['estado']  
+
+        if (tipo == 'update'):
+            query = '''
+            UPDATE libros
+            SET
+                titulo = %s,
+                descrip = %s,
+                autor = %s,
+                editorial = %s,
+                anio_publicacion = %s,                
+                estado = %s
+            WHERE isbn = %s
+            '''
+            valores_query = [titulo,descrip,autor,editorial,anio,estado,isbn]
+        
+        elif(tipo == 'create'):
+            query = '''
+            INSERT INTO libros (isbn, titulo, descrip, autor, editorial, anio_publicacion, estado)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            '''
+            valores_query = [isbn, titulo, descrip, autor, editorial, anio, estado]
+
+        cur.execute(query, valores_query)
+        mysql.connection.commit()
+
+        # Verificar si se realizaron cambios
+        if cur.rowcount == 0:
+            return jsonify({'message':f'El pedido realizado no ha modificado ninguna fila.'}),400
+
+        # Obtener el ID del nuevo libro insertado
+        if(tipo=='create'):        
+            libro_id = cur.lastrowid
+
+        cur.close()
+
+        if(tipo == 'update'):
+            return jsonify({'message':f'Libro actualizado correctamente con ISBN: {isbn}'}), 200
+
+        if(tipo == 'create'):
+            return jsonify({'message':f'Libro creado correctamente con ID "{libro_id}" e ISBN "{isbn}"'}), 200
+
+    except Exception as e:
+        return f'Error al editar el catalogo: {str(e)}', 500
 # ============================================================
 
 # Run app
