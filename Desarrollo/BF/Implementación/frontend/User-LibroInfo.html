@@ -1,181 +1,192 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Información del libro</title>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-    <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <title>Información del libro</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- CSS FILES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+    rel="stylesheet" />
 
-    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .book-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: auto;
-            display: flex;
-            align-items: flex-start;
-        }
-        .book-cover {
-            flex: 1;
-            text-align: center;
-            margin-right: 20px;
-        }
-        .book-cover img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .book-info {
-            flex: 2;
-        }
-        .book-info h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .book-info p {
-            margin: 5px 0;
-        }
-        .book-info .label {
-            font-weight: bold;
-        }
-        .reserve-button {
-            margin-top: 20px;
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #ffa600;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            text-align: center;
-        }
-        .reserve-button:hover {
-            background-color: #b36e00;
-        }
-      :root {
-        --primary-color: #1652f7;
-        --secondary-color: #455ea2;
-      }
+  <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
 
-      .full-screen {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f0f0f0;
-      }
-      .sticky-wrapper {
-        position: relative;
-      }
-    </style>
-  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
 
-  <body id="top">
-    <main>
-      <div id="navbar-placeholder"></div>
-    
-      <div class="book-container">
-        <div class="book-cover">
-          <img id="book-cover" src="" alt="Portada del Libro">
-        </div>
-        <div class="book-info">
-          <h1 id="book-title">Título del Libro</h1>
-          <p><span class="label">Descripción:</span> <span id="book-description">Una breve descripción del libro que proporciona información sobre el contenido y los temas tratados.</span></p> 
-          <p><span class="label">Autor:</span> <span id="book-author">Nombre del Autor</span></p>
-          <p><span class="label">Año de Publicación:</span> <span id="book-year">Año de Publicación</span></p>
-          <p><span class="label">Editorial:</span> <span id="book-editorial">Nombre de la Editorial</span></p>
-          <p><span class="label">ISBN:</span> <span id="book-isbn">id_libro</span></p>
-          <p><span class="label">Estado:</span> <span id="book-state">Estado del Libro</span></p>
-          <a href="#" class="reserve-button">Reservar</a>
-        </div>
+    .book-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: auto;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .book-cover {
+      flex: 1;
+      text-align: center;
+      margin-right: 20px;
+    }
+
+    .book-cover img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .book-info {
+      flex: 2;
+    }
+
+    .book-info h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .book-info p {
+      margin: 5px 0;
+    }
+
+    .book-info .label {
+      font-weight: bold;
+    }
+
+    .reserve-button {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #ffa600;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .reserve-button:hover {
+      background-color: #b36e00;
+    }
+
+    :root {
+      --primary-color: #1652f7;
+      --secondary-color: #455ea2;
+    }
+
+    .full-screen {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    .sticky-wrapper {
+      position: relative;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <main>
+    <div id="navbar-placeholder"></div>
+
+    <div class="book-container">
+      <div class="book-cover">
+        <img id="book-cover" src="" alt="Portada del Libro">
       </div>
-    </main>
-    <div id="footer-placeholder"></div>
+      <div class="book-info">
+        <h1 id="book-title">Título del Libro</h1>
+        <p><span class="label">Descripción:</span> <span id="book-description">Una breve descripción del libro que
+            proporciona información sobre el contenido y los temas tratados.</span></p>
+        <p><span class="label">Autor:</span> <span id="book-author">Nombre del Autor</span></p>
+        <p><span class="label">Año de Publicación:</span> <span id="book-year">Año de Publicación</span></p>
+        <p><span class="label">Editorial:</span> <span id="book-editorial">Nombre de la Editorial</span></p>
+        <p><span class="label">ISBN:</span> <span id="book-isbn">id_libro</span></p>
+        <p><span class="label">Estado:</span> <span id="book-state">Estado del Libro</span></p>
+        <a href="#" class="reserve-button">Reservar</a>
+      </div>
+    </div>
+  </main>
+  <div id="footer-placeholder"></div>
 
-    <style>
-      .site-footer::after {
-        border-color: transparent transparent #f7b816 transparent;
+  <style>
+    .site-footer::after {
+      border-color: transparent transparent #f7b816 transparent;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tituloLibro = urlParams.get('titulo');
+
+      if (tituloLibro) {
+        await loadBookDetails(tituloLibro);
       }
-    </style>
-    <script>
-      document.addEventListener('DOMContentLoaded', async function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const tituloLibro = urlParams.get('titulo');
-    
-        if (tituloLibro) {
-          await loadBookDetails(tituloLibro);
+    });
+
+    async function loadBookDetails(tituloLibro) {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ titulo: tituloLibro })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const libro = data.libros[0]; // Tomar el primer libro encontrado
+          console.log(data);
+          // Mostrar los datos del libro en la página
+          document.getElementById('book-cover').src = `..${libro.pathPortada}`;
+          document.getElementById('book-title').textContent = libro.titulo;
+          document.getElementById('book-isbn').textContent = libro.isbn;
+          document.getElementById('book-description').textContent = libro.descrip;
+          document.getElementById('book-author').textContent = libro.autor;
+          document.getElementById('book-editorial').textContent = libro.editorial;
+          document.getElementById('book-year').textContent = libro.anio_publicacion;
+          document.getElementById('book-state').textContent = libro.estado;
+        } else {
+          console.error('Error al cargar los detalles del libro:', data);
         }
-      });
-    
-      async function loadBookDetails(tituloLibro) {
-        try {
-          const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ busqueda: tituloLibro })
-          });
-    
-          const data = await response.json();
-    
-          if (response.ok) {
-            const libro = data.libros[0]; // Tomar el primer libro encontrado
-            console.log(data);
-            // Mostrar los datos del libro en la página
-            document.getElementById('book-cover').src = `..${libro.pathPortada}`;
-            document.getElementById('book-title').textContent = libro.titulo;
-            document.getElementById('book-isbn').textContent = libro.isbn;
-            document.getElementById('book-description').textContent = libro.descrip;
-            document.getElementById('book-author').textContent = libro.autor;
-            document.getElementById('book-editorial').textContent = libro.editorial;
-            document.getElementById('book-year').textContent = libro.anio_publicacion;
-            document.getElementById('book-state').textContent = libro.estado;
-          } else {
-            console.error('Error al cargar los detalles del libro:', data);
-          }
-        } catch (error) {
-          console.error('Error:', error);
-        }
+      } catch (error) {
+        console.error('Error:', error);
       }
-    </script>
-    
-    
-    
-    <!-- JAVASCRIPT FILES -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/loadComponent.js" defer></script>
-  </body>
+    }
+  </script>
+
+
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/click-scroll.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/loadComponent.js" defer></script>
+</body>
+
 </html>
