@@ -46,84 +46,31 @@
 
   <body id="top">
     <main>
-      
       <div id="navbar-placeholder"></div>
       
       <div class="album py-5 bg-light">
-
         <div class="container">
           <div class="row" style="padding-bottom: 25px;">
             <div class="col-lg-12 col-12 mx-auto">
-              <h2 class="text-center">
-                Busqueda de Libros
-              </h2>
+              <h2 class="text-center">Busqueda de Libros</h2>
             </div>
           </div>
-
+          
           <div class="container">
-            <form class="d-flex" role="search" style="margin-left: 900px;">
+            <form class="d-flex" role="search" style="margin-left: 900px;" id="searchForm">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
           </div>
-
           
-        
-            <div class="row" style="margin-top: 20px;">
-
-              <div class="col-md-3">           
-                <div class="card mb-4 shadow-sm">
-                  <svg
-                    class="bd-placeholder-img card-img-top"
-                    width="100%"
-                    height="393px"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                    role="img"
-                    aria-label="Placeholder: Thumbnail"
-                    style="margin-top: 10px"
-                  >
-                    <image
-                    href="images/libros/libro fisica.webp"
-                    height="100%"
-                    width="100%" 
-                    />
-                  </svg>                  
-                  <div class="card-body">
-                    <p class="card-text">
-                      Titulo: Lorem ipsum dolor sit amet.
-                    </p>
-                    <p class="card-text">
-                      Tags: Lorem ipsum dolor sit amet.
-                    </p>
-
-                    <div
-                      class="d-flex justify-content-between align-items-center"
-                    >
-                      <div class="btn-group">
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-secondary"
-                        >
-                          Detalles
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-secondary"
-                        >
-                          Reservar
-                        </button>
-                      </div>
-                      <!-- <small class="text-muted">9 mins</small> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="row" style="margin-top: 20px;" id="resultsContainer">
+            <!-- Resultados de la búsqueda se agregarán aquí -->
+          </div>
         </div>
       </div>
     </main>
+    
+      
 
     <div id="footer-placeholder"></div>
 
@@ -132,6 +79,68 @@
         border-color: transparent transparent #f7b816 transparent;
       }
     </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', async function() {
+        // Obtener el parámetro 'keyword' de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const keyword = urlParams.get('keyword');
+    
+        if (keyword) {
+          await searchBooks(keyword);
+        }
+    
+        document.querySelector('form').addEventListener('submit', async function(event) {
+          event.preventDefault();
+          const searchInput = document.querySelector('input[type="search"]').value;
+          await searchBooks(searchInput);
+        });
+      });
+    
+      async function searchBooks(keyword) {
+        try {
+          const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ busqueda: keyword })
+          });
+    
+          const data = await response.json();
+          const resultsContainer = document.getElementById('resultsContainer') || document.getElementById('container-libros');
+          resultsContainer.innerHTML = '';
+    
+          if (response.ok) {
+            data.libros.forEach(libro => {
+              const libroElement = `
+                <div class="col-md-3">
+                  <div class="card mb-4 shadow-sm">
+                    <img src="..${libro.pathPortada}" class="card-img-top" height="393px" />
+                    <div class="card-body">
+                      <p class="card-text">Título: ${libro.titulo}</p>
+                      <p class="card-text">Autor: ${libro.autor}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" onclick="location.href='User-LibroInfo.html?titulo=${libro.titulo}'" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Reservar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+              resultsContainer.innerHTML += libroElement;
+            });
+          } else {
+            resultsContainer.innerHTML = `<p>${data.mensaje}</p>`;
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      }
+    </script>
+    
+    
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

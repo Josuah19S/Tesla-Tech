@@ -100,27 +100,24 @@
 
   <body id="top">
     <main>
-      
       <div id="navbar-placeholder"></div>
-      
+    
       <div class="book-container">
         <div class="book-cover">
-            <img src="URL_DE_LA_IMAGEN_DE_PORTADA" alt="Portada del Libro">
+          <img id="book-cover" src="" alt="Portada del Libro">
         </div>
         <div class="book-info">
-            <h1>Título del Libro</h1>
-            <p><span class="label">ID del Libro:</span> id_libro</p>
-            <p><span class="label">Descripción:</span> Una breve descripción del libro que proporciona información sobre el contenido y los temas tratados.</p>
-            <p><span class="label">Autor:</span> Nombre del Autor</p>
-            <p><span class="label">Editorial:</span> Nombre de la Editorial</p>
-            <p><span class="label">Año de Publicación:</span> Año de Publicación</p>
-            <p><span class="label">Estado:</span> Estado del Libro</p>
-            <a href="#" class="reserve-button">Reservar</a>
+          <h1 id="book-title">Título del Libro</h1>
+          <p><span class="label">ID del Libro:</span> <span id="book-id">id_libro</span></p>
+          <p><span class="label">Descripción:</span> <span id="book-description">Una breve descripción del libro que proporciona información sobre el contenido y los temas tratados.</span></p>
+          <p><span class="label">Autor:</span> <span id="book-author">Nombre del Autor</span></p>
+          <p><span class="label">Editorial:</span> <span id="book-editorial">Nombre de la Editorial</span></p>
+          <p><span class="label">Año de Publicación:</span> <span id="book-year">Año de Publicación</span></p>
+          <p><span class="label">Estado:</span> <span id="book-state">Estado del Libro</span></p>
+          <a href="#" class="reserve-button">Reservar</a>
         </div>
-    </div>
-    </div>
+      </div>
     </main>
-
     <div id="footer-placeholder"></div>
 
     <style>
@@ -128,6 +125,51 @@
         border-color: transparent transparent #f7b816 transparent;
       }
     </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', async function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tituloLibro = urlParams.get('titulo');
+    
+        if (tituloLibro) {
+          await loadBookDetails(tituloLibro);
+        }
+      });
+    
+      async function loadBookDetails(tituloLibro) {
+        try {
+          const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ busqueda: tituloLibro })
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            const libro = data.libros[0]; // Tomar el primer libro encontrado
+            console.log(data);
+            // Mostrar los datos del libro en la página
+            document.getElementById('book-cover').src = `..${libro.pathPortada}`;
+            document.getElementById('book-title').textContent = libro.titulo;
+            document.getElementById('book-id').textContent = libro.id_libro;
+            document.getElementById('book-description').textContent = libro.descrip;
+            document.getElementById('book-author').textContent = libro.autor;
+            document.getElementById('book-editorial').textContent = libro.editorial;
+            document.getElementById('book-year').textContent = libro.anio_publicacion;
+            document.getElementById('book-state').textContent = libro.estado;
+          } else {
+            console.error('Error al cargar los detalles del libro:', data);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      }
+    </script>
+    
+    
+    
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
