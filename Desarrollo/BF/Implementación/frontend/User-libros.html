@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Biblio F-Easy - Libros</title>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-    <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <title>Biblio F-Easy - Libros</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- CSS FILES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+    rel="stylesheet" />
 
-    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
 
-    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+  <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
-    <style>
-      :root {
-        --primary-color: #1652f7;
-        --secondary-color: #455ea2;
-      }
+  <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
 
-      .full-screen {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f0f0f0;
-      }
-      .sticky-wrapper {
-        position: relative;
-      }
-    </style>
-  </head>
+  <style>
+    :root {
+      --primary-color: #1652f7;
+      --secondary-color: #455ea2;
+    }
 
-  <body id="top">
-    <main>
+    .full-screen {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
 
-      <div id="navbar-placeholder"></div>
-      
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row" style="padding-bottom: 25px;">
-            <div class="col-lg-10 col-12 mx-auto">
-              <h2 class="text-center">
-                Libros Populares
-              </h2>
-            </div>
-          </div>
-          <div class="row" id="container-libros">
-             
+    .sticky-wrapper {
+      position: relative;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <main>
+
+    <div id="navbar-placeholder"></div>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row" style="padding-bottom: 25px;">
+          <div class="col-lg-10 col-12 mx-auto">
+            <h2 class="text-center">
+              Libros Populares
+            </h2>
           </div>
         </div>
+        <div class="row" id="container-libros">
+
+        </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <div id="footer-placeholder"></div>
+  <div id="footer-placeholder"></div>
 
-    <style>
-      .site-footer::after {
-        border-color: transparent transparent #f7b816 transparent;
-      }
-    </style>
-    <!-- JAVASCRIPT FILES -->
-    <script>
-      document.addEventListener('DOMContentLoaded', async function() {
-        try {
-          const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ busqueda: '' }) // Búsqueda vacía para obtener todos los libros
-          });
+  <style>
+    .site-footer::after {
+      border-color: transparent transparent #f7b816 transparent;
+    }
+  </style>
+  <!-- JAVASCRIPT FILES -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ titulo: '' }) // Búsqueda vacía para obtener todos los libros
+        });
 
-          const data = await response.json();
+        const data = await response.json();
 
-          const containerLibros = document.getElementById('container-libros');
-          containerLibros.innerHTML = '';
+        const containerLibros = document.getElementById('container-libros');
+        containerLibros.innerHTML = '';
 
-          if (response.ok) {
-            data.libros.forEach(libro => {
-              const libroElement = `
+        if (response.ok) {
+          data.libros.forEach(libro => {
+            const libroElement = `
                 <div class="col-md-3">
                   <div class="card mb-4 shadow-sm">
                     <img src="..${libro.pathPortada}" class="card-img-top" height="393px" />
@@ -108,21 +108,22 @@
                   </div>
                 </div>
               `;
-              containerLibros.innerHTML += libroElement;
-            });
-          } else {
-            containerLibros.innerHTML = `<p>${data.mensaje}</p>`;
-          }
-        } catch (error) {
-          console.error('Error:', error);
+            containerLibros.innerHTML += libroElement;
+          });
+        } else {
+          containerLibros.innerHTML = `<p>${data.mensaje}</p>`;
         }
-      });
-    </script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/loadComponent.js" defer></script>
-  </body>
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/click-scroll.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/loadComponent.js" defer></script>
+</body>
+
 </html>

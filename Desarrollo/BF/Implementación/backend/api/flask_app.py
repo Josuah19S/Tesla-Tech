@@ -231,19 +231,33 @@ def buscar_libro():
         # Obtener el JSON del cuerpo de la solicitud
         data = request.get_json()
 
-        # Validar que el JSON contenga solo el campo 'busqueda' y sea una cadena válida
-        if len(data) != 1 or 'busqueda' not in data or not isinstance(data['busqueda'], str):
-            abort(400, 'El JSON debe contener solo el campo "busqueda" como una cadena válida')
+        # Lista de campos permitidos
+        campos_permitidos = ['titulo', 'isbn']
 
-        # Obtener el término de búsqueda del JSON recibido
-        termino = data['busqueda']
+        # Filtrar los campos presentes en el JSON que están en la lista de campos permitidos
+        campos_presentes = [campo for campo in data if campo in campos_permitidos]
 
-        # Conexión al cursor de la base de datos
+        # Validar que haya exactamente un campo permitido y que sea una cadena válida
+        if len(campos_presentes) != 1:
+            abort(400, f'El JSON debe contener exactamente uno de los siguientes campos: {", ".join(campo for campo in campos_permitidos)}')
+
+        campo = campos_presentes[0]
+        if not isinstance(data[campo], str):
+            abort(400, f'El campo "{campo}" debe ser una cadena válida')
+
+        # Realizar query dependiendo del campo presente
+        termino = data[campo]
         cur = mysql.connection.cursor()
 
-        # Ejecutar la consulta SQL para buscar libros cuyo título contenga el término
-        query = "SELECT * FROM libros WHERE titulo LIKE %s"
-        cur.execute(query, ('%' + termino + '%',))
+        if(campo == 'isbn'):
+            if not termino:
+                abort('El campo "isbn" no puede estar vacío')
+            
+            query = f"SELECT * FROM libros WHERE isbn = {termino}"
+            cur.execute(query)
+        else:
+            query = f"SELECT * FROM libros WHERE {campo} LIKE %s"
+            cur.execute(query, ('%' + termino + '%',))
 
         # Obtener los resultados de la consulta
         resultados = cur.fetchall()
@@ -253,7 +267,7 @@ def buscar_libro():
 
         # Si no se encontraron resultados, retornar un mensaje adecuado
         if not resultados:
-            return jsonify({'mensaje': f'No se encontraron libros que coincidan con "{termino}"'}), 404
+            return jsonify({'mensaje': f'No se encontraron libros que coincidan con el {campo}: "{termino}"'}), 404
 
         # Convertir resultados a una lista de diccionarios
         libros = []
@@ -277,6 +291,10 @@ def buscar_libro():
         # Contar la cantidad de libros encontrados
         cantidad_libros = len(libros)
 
+        # Verifica si no hay mas de un libro con el mismo isbn
+        if(campo == 'isbn' and cantidad_libros>1):
+            return jsonify({'Error': f'Mas de un libro coincide con el isbn "{termino}"'}), 404
+        
         # Devolver los resultados en formato JSON incluyendo la cantidad de libros
         return jsonify({'cantidad_libros': cantidad_libros, 'libros': libros})
 
