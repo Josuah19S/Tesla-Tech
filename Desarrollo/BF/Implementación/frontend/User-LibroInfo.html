@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Información del libro</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .book-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            align-items: flex-start;
+        }
+        .book-cover {
+            flex: 1;
+            text-align: center;
+            margin-right: 20px;
+        }
+        .book-cover img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .book-info {
+            flex: 2;
+        }
+        .book-info h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .book-info p {
+            margin: 5px 0;
+        }
+        .book-info .label {
+            font-weight: bold;
+        }
+        .reserve-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ffa600;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .reserve-button:hover {
+            background-color: #b36e00;
+        }
+      :root {
+        --primary-color: #1652f7;
+        --secondary-color: #455ea2;
+      }
+
+      .full-screen {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+      .sticky-wrapper {
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <main>
+      
+      <div id="navbar-placeholder"></div>
+      
+      <div class="book-container">
+        <div class="book-cover">
+            <img src="URL_DE_LA_IMAGEN_DE_PORTADA" alt="Portada del Libro">
+        </div>
+        <div class="book-info">
+            <h1>Título del Libro</h1>
+            <p><span class="label">ID del Libro:</span> id_libro</p>
+            <p><span class="label">Descripción:</span> Una breve descripción del libro que proporciona información sobre el contenido y los temas tratados.</p>
+            <p><span class="label">Autor:</span> Nombre del Autor</p>
+            <p><span class="label">Editorial:</span> Nombre de la Editorial</p>
+            <p><span class="label">Año de Publicación:</span> Año de Publicación</p>
+            <p><span class="label">Estado:</span> Estado del Libro</p>
+            <a href="#" class="reserve-button">Reservar</a>
+        </div>
+    </div>
+    </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <style>
+      .site-footer::after {
+        border-color: transparent transparent #f7b816 transparent;
+      }
+    </style>
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/loadComponent.js" defer></script>
+  </body>
+</html>

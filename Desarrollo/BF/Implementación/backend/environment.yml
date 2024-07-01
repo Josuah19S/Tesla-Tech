@@ -1,15 +1,17 @@
 name: bf_easy_backend
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - blas=1.0=mkl
   - blinker=1.6.2=py310haa95532_0
   - bottleneck=1.3.7=py310h9128911_0
   - bzip2=1.0.8=h2bbff1b_6
-  - ca-certificates=2024.3.11=haa95532_0
+  - ca-certificates=2024.6.2=h56e8100_0
   - click=8.1.7=py310haa95532_0
   - colorama=0.4.6=py310haa95532_0
   - flask=3.0.3=py310haa95532_0
+  - flask-cors=4.0.0=pyhd8ed1ab_0
   - intel-openmp=2023.1.0=h59b6b97_46320
   - itsdangerous=2.2.0=py310haa95532_0
   - jinja2=3.1.4=py310haa95532_0
@@ -22,7 +24,7 @@ dependencies:
   - numexpr=2.8.7=py310h2cd9be0_0
   - numpy=1.26.4=py310h055cbcc_0
   - numpy-base=1.26.4=py310h65a83cf_0
-  - openssl=3.0.14=h827c3e9_0
+  - openssl=3.3.1=h2466b09_1
   - pandas=2.2.2=py310h5da7b33_0
   - pip=24.0=py310haa95532_0
   - python=3.10.14=he1021f5_1
@@ -35,8 +37,10 @@ dependencies:
   - tbb=2021.8.0=h59b6b97_0
   - tk=8.6.14=h0416ee5_0
   - tzdata=2024a=h04d1e81_0
+  - ucrt=10.0.22621.0=h57928b3_0
   - vc=14.2=h2eaa2aa_1
-  - vs2015_runtime=14.29.30133=h43f2093_3
+  - vc14_runtime=14.40.33810=ha82c5b3_20
+  - vs2015_runtime=14.40.33810=h3bf8584_20
   - werkzeug=3.0.3=py310haa95532_0
   - wheel=0.43.0=py310haa95532_0
   - xz=5.4.6=h8cc25b3_1
