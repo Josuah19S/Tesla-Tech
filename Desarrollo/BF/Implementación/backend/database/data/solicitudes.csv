@@ -1,0 +1,9 @@
+id_solicitud	cod_alumno	tipo_solic	fecha_solicitud	justif_solic	estado_solic	admin_encargado	observ_solic
+1	23200318	pupitre	26/06/2024	Necesito un pupitre para estudiar para los exámenes finales de la próxima semana.	rechazado	miriam	La solicitud no cumple con los requisitos establecidos para el uso de pupitres.
+2	22200070	pupitre	24/06/2024	Solicito pupitre para participar en un taller de investigación.	aceptado	miriam	
+3	21200217	pupitre	24/06/2024	Necesito un pupitre para revisar apuntes y preparar una presentación.	rechazado	miriam	El solicitante tiene sanciones pendientes que impiden la asignación de pupitres.
+4	22200263	pupitre	23/06/2024	Requiero un pupitre para estudiar en un lugar tranquilo durante la tarde.	pendiente	miriam	
+5	22200304	pupitre	27/06/2024	Necesito un pupitre para la revisión de tesis con mi asesor.	pendiente	miriam	
+6	22200280	pupitre	26/06/2024	Solicito pupitre para trabajar en el proyecto final de mi curso con mi equipo.	aceptado	miriam	
+7	22200237	pupitre	24/06/2024	Necesito espacio para estudiar con mis compañeros antes de la clase.	pendiente	miriam	
+8	22200258	pupitre	25/06/2024	Requiero un pupitre para trabajar en el proyecto final de mi curso.	rechazado	miriam	La solicitud fue enviada fuera del plazo permitido para reservas.

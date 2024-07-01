@@ -1,0 +1,14 @@
+id_pupitre	ubicacion	estado
+1	izq_sup	libre
+2	izq_sup	ocupado
+3	izq_sup	libre
+4	izq_med	libre
+5	izq_med	libre
+6	izq_med	libre
+7	izq_inf	libre
+8	izq_inf	libre
+9	izq_inf	libre
+10	der	libre
+11	der	libre
+12	der	libre
+13	der	ocupado
