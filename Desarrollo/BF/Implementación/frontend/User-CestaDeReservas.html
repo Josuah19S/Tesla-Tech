@@ -89,7 +89,7 @@
                     <th>Título de la obra</th>
                     <th>Autor</th>
                     <th>Año de publicación</th>
-                    <th>Género</th>
+                    <th>Editorial</th>
                     <th></th>
                 </tr>
             </thead>
@@ -99,7 +99,7 @@
                     <td>NombreLibro1</td>
                     <td>Autor1</td>
                     <td>2024</td>
-                    <td>Genero1</td>
+                    <td>Editorial1</td>
                     <td><button class="detalles-btn">Ver detalles</button></td>
                 </tr>
                 <tr>
@@ -107,7 +107,7 @@
                     <td>NombreLibro2</td>
                     <td>Autor2</td>
                     <td>2024</td>
-                    <td>Genero2</td>
+                    <td>Editorial2</td>
                     <td><button class="detalles-btn">Ver detalles</button></td>
                 </tr>
                 <tr>
@@ -115,7 +115,7 @@
                     <td>NombreLibro3</td>
                     <td>Autor3</td>
                     <td>2024</td>
-                    <td>Genero3</td>
+                    <td>Editorial3</td>
                     <td><button class="detalles-btn">Ver detalles</button></td>
                 </tr>
                 <tr>
@@ -123,7 +123,7 @@
                     <td>NombreLibro4</td>
                     <td>Autor4</td>
                     <td>2024</td>
-                    <td>Genero4</td>
+                    <td>Editorial4</td>
                     <td><button class="detalles-btn">Ver detalles</button></td>
                 </tr>
             </tbody>
@@ -150,153 +150,3 @@
 
 
   </html>
-  
-<!-- <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <title>Biblio F-Easy - Cesta de Reservas</title>
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-    <link href="css/bootstrap-icons.css" rel="stylesheet" />
-
-    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
-
-    <style>
-      :root {
-        --primary-color: #1652f7;
-        --secondary-color: #455ea2;
-      }
-
-      .full-screen {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f0f0f0;
-      }
-      .sticky-wrapper {
-        position: relative;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 1px solid #ddd;
-      }
-      th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-      }
-      th {
-        background-color: #cacaca;
-      }
-      .eliminar-btn {
-        background-color: #ccc;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-      }
-      .eliminar-btn:hover {
-        background-color: #bbb;
-      }
-      .checkbox-cell {
-        text-align: center;
-      }
-    </style>
-  </head>
-
-  <body id="top">
-    <main>
-
-      <div id="navbar-placeholder"></div>
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row" style="padding-bottom: 25px;">
-            <div class="col-lg-10 col-12 mx-auto">
-              <h2 class="text-center">
-                Cesta de reservas
-              </h2>
-            </div>
-          </div>
-          <table>
-            <thead>
-                <tr>
-                    <th>Seleccionar</th>
-                    <th>Título de la obra</th>
-                    <th>Autor</th>
-                    <th>Año de publicación</th>
-                    <th>Género</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="checkbox-cell"><input type="checkbox"></td>
-                    <td>NombreLibro1</td>
-                    <td>Autor1</td>
-                    <td>2024</td>
-                    <td>Genero1</td>
-                    <td><button class="eliminar-btn">Eliminar de mi lista</button></td>
-                </tr>
-                <tr>
-                    <td class="checkbox-cell"><input type="checkbox"></td>
-                    <td>NombreLibro2</td>
-                    <td>Autor2</td>
-                    <td>2024</td>
-                    <td>Genero2</td>
-                    <td><button class="eliminar-btn">Eliminar de mi lista</button></td>
-                </tr>
-                <tr>
-                    <td class="checkbox-cell"><input type="checkbox"></td>
-                    <td>NombreLibro3</td>
-                    <td>Autor3</td>
-                    <td>2024</td>
-                    <td>Genero3</td>
-                    <td><button class="eliminar-btn">Eliminar de mi lista</button></td>
-                </tr>
-                <tr>
-                    <td class="checkbox-cell"><input type="checkbox"></td>
-                    <td>NombreLibro4</td>
-                    <td>Autor4</td>
-                    <td>2024</td>
-                    <td>Genero4</td>
-                    <td><button class="eliminar-btn">Eliminar de mi lista</button></td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-      </div>
-    </main>
-
-    <div id="footer-placeholder"></div>
-
-    <style>
-      .site-footer::after {
-        border-color: transparent transparent #f7b816 transparent;
-      }
-    </style>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/loadComponent.js" defer></script>
-  </body>
-</html> -->
