@@ -112,11 +112,27 @@
                 <button type="submit" class="form-control">Buscar</button>
               </div>
             </form>
+
+          </div>
+        </div>
+      </div>
+    </section class="faq-section section-padding">
+    <section>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row" style="padding-bottom: 25px;">
+            <div class="col-lg-10 col-12 mx-auto">
+              <h2 class="text-center">
+                Novedades
+              </h2>
+            </div>
+          </div>
+          <div class="row" id="container-libros">
+  
           </div>
         </div>
       </div>
     </section>
-
     <section class="faq-section section-padding" id="section_4">
       <div class="container">
         <div class="row">
@@ -143,28 +159,7 @@
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                   data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nostrum, ut accusantium suscipit blanditiis minima earum
-                    quod voluptatum fuga unde, amet maxime facere sed ullam
-                    similique.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Cómo puedo usar Biblio F-Easy?
-                  </button>
-                </h2>
-
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quia, deserunt perspiciatis. Quod, quo voluptatem et sunt
-                    hic animi quasi architecto.
+                    Biblio F-Easy es un sistema de gestión bibliotecaria diseñado para modernizar y agilizar los procesos internos y externos relacionados con la biblioteca de una facultad. Permite a los usuarios buscar, reservar y acceder a recursos bibliográficos de manera rápida y eficiente. Además, facilita la gestión de la reserva de pupitres y el proceso de solicitud de carnets de biblioteca de forma transparente y conveniente​
                   </div>
                 </div>
               </div>
@@ -208,6 +203,57 @@
       window.location.href = `User-Busqueda.html?keyword=${encodeURIComponent(keyword)}`;
     });
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ titulo: '' })
+        });
+  
+        const data = await response.json();
+  
+        const containerLibros = document.getElementById('container-libros');
+        containerLibros.innerHTML = '';
+  
+        if (response.ok) {
+          // Ordenamos los libros por id en orden descendente
+          const librosOrdenados = data.libros.sort((a, b) => b.id_libro - a.id_libro);
+
+          const primerosCuatroLibros = librosOrdenados.slice(0, 4);
+  
+          primerosCuatroLibros.forEach(libro => {
+            const libroElement = `
+              <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                  <img src="..${libro.pathPortada}" class="card-img-top" height="393px" />
+                  <div class="card-body">
+                    <p class="card-text">Título: ${libro.titulo}</p>
+                    <p class="card-text">Autor: ${libro.autor}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" onclick="location.href='User-LibroInfo.html?titulo=${libro.titulo}'" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Reservar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            containerLibros.innerHTML += libroElement;
+          });
+        } else {
+          containerLibros.innerHTML = `<p>${data.mensaje}</p>`;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
+  
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
