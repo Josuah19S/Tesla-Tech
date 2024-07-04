@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+
+    <style>
+        :root {
+        --primary-color: #1652f7;
+        --secondary-color: #455ea2;
+      }
+
+      .sticky-wrapper {
+        position: relative;
+      }
+
+      .divider::after,
+      .divider::before {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #eee;
+      }
+
+      .h-custom {
+        height: calc(100% - 73px);
+      }
+
+      @media (max-width: 450px) {
+        .h-custom {
+          height: 100%;
+        }
+      }
+    </style>
+
+    <title>Biblio F-Easy - Login</title>
+  </head>
+  <body>
+    <main>
+      
+    <section class="vh-100">
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form id="loginForm">
+              <div class="divider d-flex align-items-center my-4">
+                  <p class="text-center fw-bold mx-3 mb-0">Bienvenido al login de Biblio F-Easy!</p>
+              </div>
+      
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Ingrese su correo institucional" required>
+                  <label class="form-label" for="form3Example3">Correo electronico</label>
+              </div>
+      
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-3">
+                  <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Ingrese su contraseña" required>
+                  <label class="form-label" for="form3Example4">Contraseña</label>
+              </div>
+      
+              <div class="d-flex justify-content-between align-items-center">
+                  <!-- Checkbox -->
+                  <div class="form-check mb-0">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3">
+                      <label class="form-check-label" for="form2Example3">Recuérdame</label>
+                  </div>
+                  <a href="RegistroGeneral.html" class="text-body">¿No tiene cuenta? Registrese</a>
+              </div>
+      
+              <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                      Ingresar
+                  </button>
+              </div>
+          </form>
+      
+          </div>
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="img-fluid"
+              alt="Sample image"
+            />
+          </div>
+        </div>
+      </div>
+      <style>
+        .site-footer::after {
+          border-color: transparent transparent #f7b816 transparent;
+        }
+      </style>
+      <div id="footer-placeholder"></div>
+    </section>
+
+    <!-- JAVASCRIPT FILES -->
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const username = document.getElementById('form3Example3').value;
+        const password = document.getElementById('form3Example4').value;
+    
+        try {
+          const response = await fetch('http://127.0.0.1:5000/api/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            const { rol } = data;
+    
+            // Redireccionar según el rol
+            if (rol === 'user') {
+              window.location.href = 'Index.html';  // Redirigir a Index.html si es usuario normal
+            } else if (rol === 'admin') {
+              window.location.href = 'Admin-Inicio.html';  // Redirigir a Admin-Inicio.html si es bibliotecóloga
+            } else {
+              console.error('Rol no reconocido:', rol);
+              // Manejar otro caso si el rol no es reconocido
+            }
+          } else {
+            console.error('Error:', data.message);
+            // Manejar errores si la respuesta no es OK
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          // Manejar errores de conexión o de otra índole
+        }
+      });
+    </script>
+    
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/loadComponent.js" defer></script>
+  </body>
+</html>

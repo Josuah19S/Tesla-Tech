@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Biblio F-Easy - Libros</title>
+
+  <!-- CSS FILES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+    rel="stylesheet" />
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+  <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-color: #1652f7;
+      --secondary-color: #455ea2;
+    }
+
+    .full-screen {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    .sticky-wrapper {
+      position: relative;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <main>
+    <div id="navbar-placeholder"></div>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row" style="padding-bottom: 25px;">
+          <div class="col-lg-12 col-12 mx-auto">
+            <h2 class="text-center">Busqueda de Libros</h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <form class="d-flex" role="search" style="margin-left: 900px;" id="searchForm">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+          </form>
+        </div>
+
+        <div class="row" style="margin-top: 20px;" id="resultsContainer">
+          <!-- Resultados de la búsqueda se agregarán aquí -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <div id="footer-placeholder"></div>
+
+  <style>
+    .site-footer::after {
+      border-color: transparent transparent #f7b816 transparent;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      // Obtener el parámetro 'keyword' de la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const keyword = urlParams.get('keyword');
+
+      if (keyword) {
+        await searchBooks(keyword);
+      }
+
+      document.querySelector('form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const searchInput = document.querySelector('input[type="search"]').value;
+        await searchBooks(searchInput);
+      });
+    });
+
+    async function searchBooks(keyword) {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ titulo: keyword })
+        });
+
+        const data = await response.json();
+        const resultsContainer = document.getElementById('resultsContainer') || document.getElementById('container-libros');
+        resultsContainer.innerHTML = '';
+
+        if (response.ok) {
+          data.libros.forEach(libro => {
+            const libroElement = `
+                <div class="col-md-3">
+                  <div class="card mb-4 shadow-sm">
+                    <img src="..${libro.pathPortada}" class="card-img-top" height="393px" />
+                    <div class="card-body">
+                      <p class="card-text">Título: ${libro.titulo}</p>
+                      <p class="card-text">Autor: ${libro.autor}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" onclick="location.href='User-LibroInfo.html?titulo=${libro.titulo}'" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Reservar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+            resultsContainer.innerHTML += libroElement;
+          });
+        } else {
+          resultsContainer.innerHTML = `<p>${data.mensaje}</p>`;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  </script>
+
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/click-scroll.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/loadComponent.js" defer></script>
+</body>
+
+</html>

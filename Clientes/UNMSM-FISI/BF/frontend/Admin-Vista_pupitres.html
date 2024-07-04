@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Biblio F-Easy - Admin Vista</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1652f7;
+            --secondary-color: #455ea2;
+        }
+        .full-screen {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .sticky-wrapper {
+            position: relative;
+        }
+        .mesa {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            cursor: move;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .mesaL {
+            width: 100px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            cursor: move;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .vacio {
+            background-color: #77dd77; /* verde */
+        }
+        .ocupado {
+            background-color: #ff6961; /* rojo */
+        }
+        .seleccionado {
+            background-color: #77dd77; /* verde, puedes cambiar según necesites */
+        }
+        .reservado {
+            background-color: #aec6cf;
+        }
+        .droppable {
+            border: 2px dashed #ccc;
+        }
+        .tooltip {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            display: none;
+            font-size: 12px;
+        }
+        .mesa:hover .tooltip {
+            display: block;
+        }
+        .panel-control {
+            margin-top: 20px;
+        }
+        .panel-control h5 {
+            margin-bottom: 15px;
+        }
+        .panel-control .form-control {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body id="top">
+    <div id="navbar-placeholder"></div>
+    <main>
+        <div class="container mt-5" id="admin-view">
+            <h2>Modo Editor</h2>
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="row droppable fila-seleccionada" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="col mesa vacio" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 1 - Desocupado</span></div>
+                        <div class="col mesa ocupado" draggable="true" ondragstart="drag(event)">Ocupado<span class="tooltip">Mesa 2 - Ocupado</span></div>
+                        <div class="col mesa vacio" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 3 - Desocupado</span></div>
+                    </div>
+                    <div class="row droppable" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="col mesa vacio" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 4 - Desocupado</span></div>
+                        <div class="col mesa seleccionado" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 5 - Desocupado</span></div>
+                        <div class="col mesa vacio" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 6 - Desocupado</span></div>
+                    </div>
+                    <div class="row droppable" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="col mesa vacio" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 7 - Desocupado</span></div>
+                        <div class="col mesa vacio" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 8 - Desocupado</span></div>
+                        <div class="col mesa vacio" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa 9 - Desocupado</span></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row droppable" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="col mesaL seleccionado" draggable="true" ondragstart="drag(event)">Desocupado<span class="tooltip">Mesa L1 - Seleccionado</span></div>
+                        <div class="col mesaL ocupado" draggable="true" ondragstart="drag(event)">Ocupado<span class="tooltip">Mesa L4 - Ocupado</span></div>   
+                    </div>
+                </div>
+            </div>
+            <div class="panel-control">
+                <h5>Gestión de Mesas</h5>
+                <form id="form-gestion">
+                    <input type="text" class="form-control" id="mesa-id" placeholder="ID de la Mesa">
+                    <select class="form-control" id="mesa-estado">
+                        <option value="vacio">Desocupado</option>
+                        <option value="ocupado">Ocupado</option>
+                        <option value="reservado">Reservado</option>
+                    </select>
+                    <button type="button" class="btn btn-primary" onclick="agregarMesa()">Agregar Mesa</button>
+                    <button type="button" class="btn btn-danger" onclick="eliminarMesa()">Eliminar Mesa</button>
+                </form>
+            </div>
+            <div class="panel-control">
+                <h5>Estadísticas de Mesas</h5>
+                <p id="stats"></p>
+            </div>
+        </div>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/scriptsPupitres.js"></script>
+    <script src="js/loadComponent.js" defer></script>
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            event.target.appendChild(document.getElementById(data));
+        }
+
+        function agregarMesa() {
+            const mesaId = document.getElementById("mesa-id").value;
+            const mesaEstado = document.getElementById("mesa-estado").value;
+            const nuevaMesa = document.createElement("div");
+            nuevaMesa.className = `col mesa ${mesaEstado}`;
+            nuevaMesa.draggable = true;
+            nuevaMesa.ondragstart = drag;
+            nuevaMesa.innerHTML = `${mesaEstado.charAt(0).toUpperCase() + mesaEstado.slice(1)}<span class="tooltip">${mesaId} - ${mesaEstado.charAt(0).toUpperCase() + mesaEstado.slice(1)}</span>`;
+            
+            // Añadir la nueva mesa en la fila seleccionada
+            const filaSeleccionada = document.querySelector(".fila-seleccionada");
+            if (filaSeleccionada) {
+                filaSeleccionada.appendChild(nuevaMesa);
+            } else {
+                console.error("No se ha seleccionado ninguna fila para añadir la mesa.");
+            }
+        }
+
+        function eliminarMesa() {
+            const mesaId = document.getElementById("mesa-id").value;
+            const mesas = document.querySelectorAll(".mesa");
+            mesas.forEach(mesa => {
+                if (mesa.querySelector(".tooltip").textContent.includes(mesaId)) {
+                    mesa.remove();
+                }
+            });
+        }
+
+        function actualizarEstadisticas() {
+            const mesas = document.querySelectorAll(".mesa");
+            let vacio = 0, ocupado = 0, seleccionado = 0, reservado = 0;
+            mesas.forEach(mesa => {
+                if (mesa.classList.contains("vacio")) vacio++;
+                if (mesa.classList.contains("ocupado")) ocupado++;
+                if (mesa.classList.contains("seleccionado")) seleccionado++;
+                if (mesa.classList.contains("reservado")) reservado++;
+            });
+            document.getElementById("stats").innerHTML = `
+                Vacío: ${vacio}<br>
+                Ocupado: ${ocupado}<br>
+                Seleccionado: ${seleccionado}<br>
+                Reservado: ${reservado}
+            `;
+        }
+
+        document.getElementById("form-gestion").addEventListener("submit", function(event) {
+            event.preventDefault();
+            agregarMesa();
+            actualizarEstadisticas();
+        });
+
+        actualizarEstadisticas();
+    </script>
+</body>
+</html>

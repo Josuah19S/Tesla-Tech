@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mantenimiento del catálogo para Biblio F-Easy" />
+    <meta name="author" content="Equipo de Desarrollo" />
+    <title>Biblio F-Easy - Mantenimiento del Catálogo</title>
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet" />
+    <style>
+      :root {
+        --primary-color: #1652f7;
+        --secondary-color: #455ea2;
+      }
+      .full-screen {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+      .sticky-wrapper {
+        position: relative;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #cacaca;
+      }
+      .btn-custom {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    
+    <div id="navbar(Admin)-placeholder"></div>
+    <main>
+      <div id="navbar(Admin)-placeholder"></div>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row" style="padding-bottom: 25px;">
+            <div class="col-lg-10 col-12 mx-auto">
+              <h2 class="text-center">
+                Mantenimiento del Catálogo
+              </h2>
+            </div>
+          </div>
+          <div class="card-title">
+            <form id="searchForm" class="d-flex" role="search" style="margin-left: 900px;">
+              <input class="form-control me-2" type="search" id="isbn-buscar" placeholder="Buscar por ISBN">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+          </div>
+          <div class="card" style="margin-top: 20px;">
+            <div class="row g-0 no-gutters">
+              <div class="col-md-4">
+                <img id="libro-portada" src="images/libros/libro fisica.webp" placeholder="Buscar por ISBN" class="img-fluid rounded-start" style="height: 100%; margin-left:-13px" alt="Portada no disponible">
+              </div>
+              <div class="col">
+                <div class="card-body">
+                  <div class="container px-1" style="margin-bottom: 10px">
+                    <div class="row gx-3">
+                      <div class="col">
+                        <h5 class="card-title">Título:</h5>
+                        <input type="text" id="titulo" class="form-control form-control-lg"/>
+                      </div>
+                      <div class="col">
+                        <h5 class="card-title">Autor:</h5>
+                        <input type="text" id="autor" class="form-control form-control-lg"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title">Año:</h5>
+                        <input type="number" id="anio" class="form-control form-control-lg"/>
+                      </div>
+                      <div class="col">
+                        <h5 class="card-title">Editorial:</h5>
+                        <input type="text" id="editorial" class="form-control form-control-lg"/>
+                      </div>
+                      <div class="col">
+                        <h5 class="card-title">Estado:</h5>
+                        <input type="text" id="estado" class="form-control form-control-lg"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group">
+                        <h5 for="descripcion">Descripción:</h5>
+                        <textarea id="descripcion" class="form-control" name="descripcion" style="height: 180px"></textarea>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title">ISBN:</h5>
+                        <input type="number" id="isbn" class="form-control form-control-lg"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row g-2" style="margin-left: 500px;">
+                    <div class="col">
+                      <button class="btn btn-outline-success" id="actualizarButton">Actualizar</button>
+                    </div>
+                    <div class="col" style="margin-left: 23px;">
+                      <button class="btn btn-outline-success" id="crearButton">Añadir</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-outline-success" id="borrarButton">Eliminar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    
+    <div id="footer-placeholder"></div>
+
+    <style>
+      .site-footer::after {
+        border-color: transparent transparent #f7b816 transparent;
+      }
+    </style>
+    <!-- JAVASCRIPT FILES -->
+    <script>
+    document.getElementById('searchForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const isbn1 = document.getElementById('isbn-buscar').value;
+      await buscarlibroconISBN(isbn1);
+    });
+    
+    async function buscarlibroconISBN(isbn1) {
+  try {
+    const response = await fetch('http://127.0.0.1:5000/api/buscarLibro', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ isbn: isbn1 })
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.libros.length > 0) {
+      const libro = data.libros[0]; // Suponemos que solo hay un libro con ese ISBN
+      document.getElementById('titulo').value = libro.titulo;
+      document.getElementById('autor').value = libro.autor;
+      document.getElementById('anio').value = libro.anio_publicacion;
+      document.getElementById('editorial').value = libro.editorial;
+      document.getElementById('estado').value = libro.estado;
+      document.getElementById('descripcion').value = libro.descrip;
+      document.getElementById('isbn').value = libro.isbn;
+      document.getElementById('isbn').disabled = true;
+      document.getElementById('libro-portada').src = `..${libro.pathPortada}`;
+    } else {
+      alert('No se encontró un libro con ese ISBN.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+    
+    document.getElementById('actualizarButton').addEventListener('click', function(event) {
+      event.preventDefault();
+      enviarLibro('update');
+    });
+    
+    document.getElementById('crearButton').addEventListener('click', function(event) {
+      event.preventDefault();
+      enviarLibro('create');
+    });
+    
+    document.getElementById('borrarButton').addEventListener('click', function(event) {
+      event.preventDefault();
+      borraLibro();
+    });
+    
+    async function enviarLibro(action) {
+      const titulo = document.getElementById('titulo').value;
+      const autor = document.getElementById('autor').value;
+      const anio = document.getElementById('anio').value;
+      const editorial = document.getElementById('editorial').value;
+      const estado = document.getElementById('estado').value;
+      const descripcion = document.getElementById('descripcion').value;
+      const isbn = document.getElementById('isbn').value;
+    
+      const columnas = {
+        titulo: titulo,
+        descrip: descripcion,
+        autor: autor,
+        anio: anio,
+        editorial: editorial,
+        isbn: isbn,
+        estado: estado
+      };
+    
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/editarCatalogo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ tipo: action, columnas: columnas })
+        });
+    
+        const data = await response.json();
+    
+        if (response.ok) {
+          alert(data.message);
+        } else {
+          alert(`Error: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    
+    async function borraLibro() {
+      const isbn = document.getElementById('isbn-buscar').value;
+    
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/editarCatalogo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ tipo: 'delete(supongo)' })
+        });
+    
+        const data = await response.json();
+    
+        if (response.ok) {
+          alert(data.message);
+          // Acá veremos qué hacemos
+
+        } else {
+          alert(`Error: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('Error: ', error);
+        alert('No funciona WAAAA');
+      }
+    }
+    </script>
+    
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/loadComponent.js" defer></script>
+  </body>
+</html>

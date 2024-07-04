@@ -1,0 +1,5 @@
+# Ignorar archivos de configuración específicos de backend
+api/config.py
+
+# Ignorar archivos de pycache
+__pycache__
